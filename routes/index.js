@@ -3,34 +3,51 @@ var router = express.Router();
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  var arr1 =  [1,2,3,4];
-  var arr2 = [3,4,5,6];
-  function mergeTwo(arr1, arr2) {
-  "use strict";
-  let merged = [];
-  let index1 = 0;
-  let index2 = 0;
-  let current = 0;
-
-  while (current < (arr1.length + arr2.length)) {
-      let unmerged1 = arr1[index1];
-      let unmerged2 = arr2[index2];
-
-      // if next comes from arr1
-      if (unmerged1 < unmerged2) {
-          merged[current] = unmerged1;
-          index1++;
-
-      // if next comes from arr2
-      } else {
-          merged[current] = unmerged2;
-          index2++;
-      }
-      current++;
+  var a=[1, 2, 3, 4, 5, 6, 2, 4];
+  var b=[3,4,5,6,7,8,9,4,3,8,9];
+  var c=[];
+  var d=[];
+  var e=[];
+var t0 = performance.now();
+  for(i=0;i<a.length;i++)
+  {
+  if(a.indexOf(a[i]) == i)
+    {
+     c.push(a[i])
+    }
   }
-  return merged;
+  for(j=0;j<b.length;j++)
+  {
+  if(b.indexOf(b[j]) == j)
+    {
+     d.push(b[j])
+    }
+   }
+
+for(k=0;k<c.length;k++)
+{
+  if(d.indexOf(c[k]) == -1)
+  {
+   d.push(c[k])
+  }
 }
-mergeTwo(arr1, arr2);// [1, 2, 3, 5, 6, 7, 8, 10, 11, 15, 19, undefined]
+
+
+d.sort();
+console.log(d);
+document.write("Sorting after elimininating duplicates " + d)
+document.write('<br/>');
+
+for(l=d.length-1;l>=0;--l)
+
+{
+ 
+e.push(d[l]);
+}
+document.write("reversing elements in array " + e);
+ 
+var t1 = performance.now();
+console.log("Call to doSomething took " + (t1 - t0) + " milliseconds.")
 });
 
 module.exports = router;
